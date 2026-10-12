@@ -1,0 +1,76 @@
+/* ==================== 主题色（三角洲行动战术琥珀金与特战深蓝黑） ==================== */
+$primary-color: #f59e0b;
+$primary-light: #fbbf24;
+$primary-dark: #d97706;
+$success-color: #10b981;
+$warning-color: #f59e0b;
+$danger-color: #ef4444;
+$info-color: #94a3b8;
+
+/* ==================== 渐变 ==================== */
+$gradient-primary: linear-gradient(135deg, #f59e0b, #fbbf24);
+$gradient-accent: linear-gradient(135deg, #0f172a, #1e293b);
+$gradient-cool: linear-gradient(135deg, #06b6d4, #0284c7);
+$gradient-hero: linear-gradient(135deg, #0b1120 0%, #1e293b 60%, #0f172a 100%);
+
+/* ==================== 文字色 ==================== */
+$text-color: #0f172a;
+$text-color-secondary: #475569;
+$text-color-placeholder: #94a3b8;
+$text-color-disabled: #cbd5e1;
+
+/* ==================== 背景色 ==================== */
+$bg-color: #ffffff;
+$bg-color-page: #f8fafc;
+$bg-color-hover: rgba(245, 158, 11, 0.06);
+$bg-color-mask: rgba(15, 23, 42, 0.7);
+
+/* ==================== 强调色 ==================== */
+$accent: #f59e0b;
+$accent-light: #fbbf24;
+$accent-dark: #b45309;
+
+/* ==================== 卡片 ==================== */
+$card-bg: #ffffff;
+$card-bg-solid: #ffffff;
+
+
+/* ==================== 边框 ==================== */
+$border-color: #e2e8f0;
+$border-color-light: #f1f5f9;
+$border-radius-sm: 8rpx;
+$border-radius: 16rpx;
+$border-radius-lg: 24rpx;
+$border-radius-round: 999rpx;
+
+/* ==================== 字号 ==================== */
+$font-size-xs: 20rpx;
+$font-size-sm: 24rpx;
+$font-size-base: 28rpx;
+$font-size-md: 30rpx;
+$font-size-lg: 32rpx;
+$font-size-xl: 36rpx;
+$font-size-xxl: 40rpx;
+
+/* ==================== 间距 ==================== */
+$spacing-xs: 8rpx;
+$spacing-sm: 16rpx;
+$spacing-base: 24rpx;
+$spacing-md: 32rpx;
+$spacing-lg: 40rpx;
+$spacing-xl: 48rpx;
+
+/* ==================== 订单状态颜色 ==================== */
+$status-pending-pay: #f59e0b;
+$status-paid: #6366f1;
+$status-assigned: #a855f7;
+$status-accepted: #6366f1;
+$status-in-progress: #06b6d4;
+$status-completed: #10b981;
+$status-confirmed: #10b981;
+$status-cancelled: #94a3b8;
+$status-refunded: #ef4444;
+$status-dispute: #ef4444;
+
+/* ==================== tabBar高度 ==================== */
+$tabbar-height: 110rpx;

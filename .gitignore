@@ -1,0 +1,74 @@
+# ==========================================
+# 《三角洲行动》接单平台 - Git 忽略规则
+# ==========================================
+
+# 1. 运行时二进制、编译产物与便携式大文件 (GitHub 单文件限 100MB)
+DeltaClubPortable/runtime/
+DeltaClubPortable/data/
+DeltaClubPortable/upload/
+DeltaClubPortable/logs/
+DeltaClubPortable/web/
+
+# 2. 前端依赖包与本地缓存 (体积高达数 GB)
+node_modules/
+**/node_modules/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+pnpm-lock.yaml
+
+# 3. 前端编译与构建输出
+dist/
+**/dist/
+delta-mp/dist/
+delta-admin-ui/dist/
+local_preview_dist/
+
+# 4. Java / Maven 编译输出与打包文件
+target/
+**/target/
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# 5. 日志与运行时临时文件
+logs/
+**/logs/
+*.log
+scratch/
+temp/
+tmp/
+
+# 6. IDE 与编辑器配置文件及本地 AI 辅助目录
+.agents/
+.idea/
+*.iml
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.settings/
+
+# 7. 操作系统自动生成文件
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# 8. 敏感环境变量与本地私有配置
+.env.local
+.env.*.local
+*.private.key
+*.pem
