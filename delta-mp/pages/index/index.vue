@@ -75,6 +75,23 @@
         <text class="notice-more">{{ notices.length }}条 ></text>
       </view>
 
+      <view class="activity-section" @click="goActivity">
+        <view class="activity-section-header">
+          <text class="activity-section-title">活动专栏</text>
+          <text class="activity-section-action">查看全部 ›</text>
+        </view>
+        <view v-if="activities.length" class="activity-section-list">
+          <view v-for="item in activities.slice(0, 3)" :key="item.id" class="activity-section-item">
+            <text class="activity-section-item-title">{{ item.title }}</text>
+            <text class="activity-section-item-date">{{ formatTime(item.createdAt) }}</text>
+          </view>
+        </view>
+        <view v-else class="activity-section-empty">
+          <image src="/static/icons/空空如也.svg" mode="aspectFit" />
+          <text>暂无活动</text>
+        </view>
+      </view>
+
       <!-- 核心模式金刚区 -->
       <view class="category-grid">
         <view
@@ -219,6 +236,7 @@ onShareTimeline(() => ({
 const banners = ref([])
 const categories = ref([])
 const notices = ref([])
+const activities = ref([])
 const recommendProducts = ref([])
 /** 热门推荐 Tab：全部 + 接口返回的分类（护航专区推荐、热门推荐等） */
 const recommendTabs = ref([])
@@ -252,9 +270,10 @@ async function loadData() {
     // 公告
     if (noticeRes.data) {
       const list = noticeRes.data.records || noticeRes.data || []
-      notices.value = list
+      notices.value = list.filter(item => item.type !== 'activity')
+      activities.value = list.filter(item => item.type === 'activity')
       // 筛选出需要弹窗展示的公告
-      const popupList = list.filter(n => n.popupDisplay === 1)
+      const popupList = notices.value.filter(n => n.popupDisplay === 1)
       if (popupList.length > 0) {
         const seenIds = uni.getStorageSync('seenNoticeIds') || []
         const unseenList = popupList.filter(n => !seenIds.includes(String(n.id)))
@@ -315,6 +334,10 @@ function switchRecommendCategory(id) {
 
 function goSearch() {
   uni.navigateTo({ url: '/pages/product/list?focus=1' })
+}
+
+function goActivity() {
+  uni.navigateTo({ url: '/pages/activity/index' })
 }
 
 function onBannerClick(item) {
@@ -642,6 +665,64 @@ function goSearchKeyword(kw) {
     padding: 4rpx 10rpx;
     border-radius: 6rpx;
   }
+}
+.activity-section {
+  margin: 18rpx 24rpx 0;
+  padding: 20rpx;
+  border: 1rpx solid #e2e8f0;
+  border-radius: 12rpx;
+  background: #ffffff;
+  box-shadow: 0 2rpx 12rpx rgba(15, 23, 42, 0.04);
+
+  .activity-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16rpx;
+    border-bottom: 1rpx solid #edf0f2;
+  }
+
+  .activity-section-title { color: #1e293b; font-size: 28rpx; font-weight: 700; }
+  .activity-section-action { color: #64748b; font-size: 22rpx; }
+
+  .activity-section-empty {
+    display: flex;
+    min-height: 176rpx;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8rpx;
+    color: #64748b;
+    font-size: 22rpx;
+
+    image { width: 96rpx; height: 96rpx; opacity: 0.7; }
+  }
+
+  .activity-section-list { padding-top: 4rpx; }
+
+  .activity-section-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68rpx;
+    gap: 16rpx;
+    border-bottom: 1rpx solid #edf0f2;
+
+    &:last-child { border-bottom: 0; }
+  }
+
+  .activity-section-item-title {
+    flex: 1;
+    overflow: hidden;
+    color: #334155;
+    font-size: 24rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .activity-section-item-date { flex-shrink: 0; color: #89919d; font-size: 20rpx; }
+
+  &:active { opacity: 0.82; }
 }
 /* === 核心模式金刚区 === */
 .category-grid {

@@ -237,6 +237,12 @@ const routes = [
         meta: { title: '公告管理', roles: ['admin'] }
       },
       {
+        path: 'activities',
+        name: 'ActivityManage',
+        component: () => import('@/views/system/ActivityList.vue'),
+        meta: { title: '活动专栏', roles: ['admin'] }
+      },
+      {
         path: 'banner',
         name: 'BannerManage',
         component: () => import('@/views/system/BannerList.vue'),
