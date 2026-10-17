@@ -16,7 +16,7 @@
     },
     {
       "path": "pages/activity/index",
-      "style": { "navigationBarTitleText": "活动专栏", "navigationBarTextStyle": "black", "backgroundColor": "#f1f5f9", "backgroundColorTop": "#f1f5f9", "backgroundColorBottom": "#f1f5f9", "initialRenderingCache": "static" }
+      "style": { "navigationBarTitleText": "活动专栏", "navigationBarTextStyle": "black", "enablePullDownRefresh": true, "backgroundColor": "#f1f5f9", "backgroundColorTop": "#f1f5f9", "backgroundColorBottom": "#f1f5f9", "initialRenderingCache": "static" }
     },
     {
       "path": "pages/category/index",

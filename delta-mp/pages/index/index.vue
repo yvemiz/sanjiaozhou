@@ -167,7 +167,7 @@
             <view class="notice-list-dot"></view>
             <view class="notice-list-info">
               <text class="notice-list-name">{{ item.title }}</text>
-              <text class="notice-list-time">{{ formatTime(item.createTime) }}</text>
+              <text class="notice-list-time">{{ formatTime(item.createdAt) }}</text>
             </view>
             <text class="notice-list-arrow">></text>
           </view>

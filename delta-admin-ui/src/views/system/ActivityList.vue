@@ -17,7 +17,7 @@
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="createTime" label="创建时间" width="180" />
+        <el-table-column prop="createdAt" label="创建时间" width="180" />
         <el-table-column label="操作" width="140" fixed="right">
           <template #default="{ row }">
             <el-button link type="primary" @click="openDialog(row)">编辑</el-button>
@@ -68,7 +68,7 @@ const dialogVisible = ref(false)
 const editingId = ref(null)
 const submitting = ref(false)
 const formRef = ref(null)
-const emptyForm = () => ({ title: '', content: '', type: 'activity', status: 0, popupDisplay: 0 })
+const emptyForm = () => ({ title: '', content: '', type: 'activity', status: 1, popupDisplay: 0 })
 const form = reactive(emptyForm())
 const rules = {
   title: [{ required: true, message: '请输入活动标题', trigger: 'blur' }],
@@ -111,9 +111,13 @@ async function handleSubmit() {
 }
 
 async function handleDelete(id) {
-  await deleteNotice(id)
-  ElMessage.success('活动已删除')
-  await fetchData()
+  try {
+    await deleteNotice(id)
+    ElMessage.success('活动已删除')
+    await fetchData()
+  } catch (e) {
+    // 删除失败的错误已由请求拦截器统一提示，这里仅避免未处理的 Promise rejection
+  }
 }
 
 onMounted(fetchData)
